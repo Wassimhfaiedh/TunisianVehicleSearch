@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+*.pt
+captures/
+vehicle_search_chroma/
+*.mp4
+venv/
+.venv/
