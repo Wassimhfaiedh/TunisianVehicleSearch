@@ -1,8 +1,10 @@
 # Tunisian Vehicle Search Using VLMs and CLIP
 
-Vehicle surveillance pipeline: YOLOv8 detection, ByteTrack tracking, line-crossing
-counting, NVIDIA Nemotron VLM for brand/color/plate reading, CLIP embeddings, and
-ChromaDB semantic search — all in one Gradio app.
+This project uses object detection (YOLO) and a vision-language model (VLM) to detect
+vehicles and read their license plates exactly as printed — including Tunisian-style
+plates (digits + "TN" + digits). Every detected vehicle is also embedded with CLIP, so
+you can search your logged vehicles using natural language ("silver peugeot") or by
+uploading a photo of a car or a license plate.
 
 ## Structure
 
@@ -24,7 +26,6 @@ git clone <your-repo-url>
 cd vehicle-clip-search
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env   # then fill in NVIDIA_API_KEY
 ```
 
 Place your model weights (`yolov8s.pt`, `license_plate_detector.pt`) in the project
