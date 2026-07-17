@@ -1,6 +1,6 @@
 # Tunisian Vehicle Search Using VLMs and CLIP
 
-_Developed by Wassim Hfaiedh_
+
 
 This project uses object detection (YOLO) and a vision-language model (VLM)
 to detect vehicles and read their license plates exactly as printed —
