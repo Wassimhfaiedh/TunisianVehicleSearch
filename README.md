@@ -1,8 +1,6 @@
 # Tunisian Vehicle Search Using VLMs and CLIP
 
 
-Everything is one app: `app.py`. No more running two separate scripts.
-
 ## Setup
 
 1. Put these two files in the same folder as `app.py`:
