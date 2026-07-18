@@ -28,17 +28,12 @@ https://github.com/user-attachments/assets/PLACEHOLDER-v1_annotated.mp4
 
 | ![silver Peugeot](assets/car_8_annotated.jpg) | ![silver Peugeot rear](assets/car_9_annotated.jpg) | ![white Peugeot van](assets/car_4_annotated.jpg) |
 |:---:|:---:|:---:|
-| Front plate, silver Peugeot 206 | Rear plate, same vehicle | White Peugeot van |
+| silver Peugeot : 135 TN 7566 | silver Peugeot : 117 TN 6953 | White Peugeot van : 135 TN 9434 |
 
 **License plate reads**
 
-| ![plate result 1](assets/plate_21_annotated.jpg) | ![plate result 2](assets/plate_22_annotated.jpg) |
-|:---:|:---:|
-| Tunisian plate close-up | Tunisian plate close-up |
+| ![plate result 1](assets/plate_21_annotated.jpg) | ![plate result 2](assets\plate_5_annotated.jpg) |
 
-> The two plate images above are placeholders — drop your `plate_21_annotated.jpg` and
-> second plate image into `assets/` with those filenames (or update the paths) before
-> pushing.
 
 ## Structure
 
