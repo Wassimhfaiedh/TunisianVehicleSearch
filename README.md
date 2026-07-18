@@ -18,25 +18,24 @@ uploading a photo of a car or a license plate.
 
 **General Overview**
 
-<img src="assets/TunisianVehicleSearch-ezgif.com-video-to-gif-converter.gif" width="700"/>
+<img src="assets/TunisianVehicleSearch-ezgif.com-video-to-gif-converter.gif" width="900"/>
 
 **YOLO Detection + VLM Plate Extraction**
 
-<img src="assets/v1_annotated-ezgif.com-video-to-gif-converter.gif" width="700"/>
+<img src="assets/v1_annotated-ezgif.com-video-to-gif-converter.gif" width="900"/>
 
 <table>
   <tr>
     <td align="center"><b>Detected Vehicles</b></td>
+    <td align="center"></td>
   </tr>
   <tr>
-    <td>
-      <img src="assets/car_8_annotated.jpg" width="270"/>
-      <img src="assets/car_9_annotated.jpg" width="270"/>
-      <img src="assets/car_4_annotated.jpg" width="270"/>
-    </td>
+    <td align="center"><img src="assets/car_8_annotated.jpg" width="400"/></td>
+    <td align="center"><img src="assets/car_4_annotated.jpg" width="400"/></td>
   </tr>
   <tr>
-    <td align="center">silver Peugeot : 135 TN 7566 &nbsp;|&nbsp; silver Peugeot : 117 TN 6953 &nbsp;|&nbsp; white Peugeot van : 135 TN 9434</td>
+    <td align="center">silver Peugeot : 135 TN 7566</td>
+    <td align="center">white Peugeot van : 135 TN 9434</td>
   </tr>
 </table>
 
