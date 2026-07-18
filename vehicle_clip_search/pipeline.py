@@ -35,7 +35,7 @@ def _load_models():
         _plate_model = YOLO(PLATE_MODEL_PATH)
 
 
-# NOTE: prompt removed on purpose (private/tuned prompt). Paste your own
+
 # VLM prompt here. It must ask the model to return valid JSON with keys:
 # vehicle_type, color, plate_type, plate_left, plate_right, plate_full, description.
 VLM_PROMPT = ""
