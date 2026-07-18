@@ -16,16 +16,13 @@ uploading a photo of a car or a license plate.
 
 ## 🎬 Demo
 
-<table>
-  <tr>
-    <td align="center"><b>General Overview</b></td>
-    <td align="center"><b>YOLO Detection + VLM Plate Extraction</b></td>
-  </tr>
-  <tr>
-    <td><img src="assets/TunisianVehicleSearch-ezgif.com-video-to-gif-converter.gif" width="480"/></td>
-    <td><img src="assets/v1_annotated-ezgif.com-video-to-gif-converter.gif" width="480"/></td>
-  </tr>
-</table>
+**General Overview**
+
+<img src="assets/TunisianVehicleSearch-ezgif.com-video-to-gif-converter.gif" width="700"/>
+
+**YOLO Detection + VLM Plate Extraction**
+
+<img src="assets/v1_annotated-ezgif.com-video-to-gif-converter.gif" width="700"/>
 
 <table>
   <tr>
