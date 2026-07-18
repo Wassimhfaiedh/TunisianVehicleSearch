@@ -56,12 +56,12 @@ uploading a photo of a car or a license plate.
 
 | Feature | Description |
 |---|---|
-| 🚙 **Vehicle Detection** | YOLOv8 detects vehicles per frame, ByteTrack keeps a stable ID across the video |
-| 🎯 **Line-Crossing Counter** | Draw a line on the first frame; vehicles are logged only when they cross it, tagged Enter/Exit |
-| 🔎 **Plate Reading via VLM** | NVIDIA Nemotron reads brand, color, and plate text exactly as printed — Tunisian and foreign formats |
-| 🧠 **CLIP Embeddings** | Every logged car and plate crop is embedded for semantic retrieval |
-| 🔍 **Semantic Search** | Search your logged vehicles with natural language ("silver peugeot") or an uploaded photo |
-| 🗄️ **Vector Storage** | ChromaDB persists car/plate embeddings and metadata locally, no external DB needed |
+|  **Vehicle Detection** | YOLOv8 detects vehicles per frame, ByteTrack keeps a stable ID across the video |
+|  **Line-Crossing Counter** | Draw a line on the first frame; vehicles are logged only when they cross it, tagged Enter/Exit |
+|  **Plate Reading via VLM** | NVIDIA Nemotron reads brand, color, and plate text exactly as printed — Tunisian and foreign formats |
+|  **CLIP Embeddings** | Every logged car and plate crop is embedded for semantic retrieval |
+|  **Semantic Search** | Search your logged vehicles with natural language ("silver peugeot") or an uploaded photo |
+|  **Vector Storage** | ChromaDB persists car/plate embeddings and metadata locally, no external DB needed |
 
 ---
 
@@ -77,7 +77,6 @@ vehicle-clip-search/
 │   └── vector_store.py           # ChromaDB read/write
 ├── assets/                       # demo media (gifs, screenshots)
 ├── requirements.txt
-├── .env.example
 └── .gitignore
 ```
 
@@ -106,11 +105,7 @@ source .venv/bin/activate        # Linux/macOS
 # 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Configure environment variables
-cp .env.example .env
-# Edit .env and add your NVIDIA_API_KEY
-
-# 5. Run the application
+# 4. Run the application
 python app.py
 ```
 
@@ -162,16 +157,6 @@ python-dotenv
 - Type a natural language query (e.g. `"silver peugeot"`), or
 - Upload a photo of a car or a plate to find visual matches
 - Click any result to see full vehicle details
-
----
-
-## 📝 Notes
-
-- `captures/` and `vehicle_search_chroma/` are created at runtime and are gitignored.
-- Never commit `.env` or model weights with embedded API keys.
-- Demo clips are stored as GIFs in `assets/` so they render natively in this README —
-  GitHub only auto-plays `.mp4` inline when uploaded via an issue/PR comment
-  (`user-attachments` links), so GIF is the simplest option for repo-hosted demos.
 
 ---
 
