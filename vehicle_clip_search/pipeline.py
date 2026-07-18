@@ -35,28 +35,30 @@ def _load_models():
         _plate_model = YOLO(PLATE_MODEL_PATH)
 
 
-VLM_PROMPT = """You are analyzing two cropped images from a traffic camera:
+# NOTE: this is a generic placeholder prompt. Replace it with your own
+# tuned prompt (plate formats, extra fields, stricter JSON schema, etc.) —
+# the original production prompt used here is kept private.
+VLM_PROMPT = """You are analyzing two cropped traffic-camera images:
 image 1 is the full vehicle, image 2 is a close-up of its license plate.
 
-First decide the plate type:
-- "tunisian": plate uses Arabic script / Tunisia's "TN" style, printed as two separate number
-  groups with a divider in the middle (e.g. "128" TN "78").
-- "foreign": plate uses Latin letters (English, French, or any non-Arabic script), like a normal
-  European/international plate (e.g. "AB-123-CD").
+Identify the plate format:
+- "tunisian": Arabic-script "TN" style plate, printed as two digit groups
+  separated by a divider (e.g. "128" TN "78").
+- "foreign": any other plate using Latin letters/digits (e.g. "AB-123-CD").
 
 Respond ONLY with valid JSON, no markdown, no backticks, no extra text:
 
 {
-  "vehicle_type": "<car brand/make if visible, e.g. BMW, Peugeot, Toyota, Renault, unknown>",
-  "color": "<dominant color of the vehicle>",
+  "vehicle_type": "<brand/make if visible, else unknown>",
+  "color": "<dominant vehicle color>",
   "plate_type": "<tunisian|foreign>",
-  "plate_left": "<if tunisian: digits left of the divider, exactly as shown, else ''>",
-  "plate_right": "<if tunisian: digits right of the divider, exactly as shown, else ''>",
-  "plate_full": "<if foreign: the full plate exactly as printed (letters+digits, keep its own spacing/dashes), else ''>",
-  "description": "<one full sentence describing the vehicle: brand, color, and plate>"
+  "plate_left": "<if tunisian: left digit group, else ''>",
+  "plate_right": "<if tunisian: right digit group, else ''>",
+  "plate_full": "<if foreign: full plate as printed, else ''>",
+  "description": "<one sentence: brand, color, and plate>"
 }
 
-Read each side/field independently and exactly as printed - do not force a fixed digit count."""
+Read each field exactly as shown, without assuming a fixed digit count."""
 
 
 def _encode_jpg(img) -> str:
