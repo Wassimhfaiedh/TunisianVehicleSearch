@@ -1,6 +1,10 @@
-# Tunisian Vehicle Search Using VLMs and CLIP
+# 🚗 Tunisian Vehicle Search
 
-Developed by Wassim Hfaiedh
+> **VLM + CLIP Vehicle Surveillance Platform** — Detect, read plates, and semantically search vehicles from traffic video.
+
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python) ![Gradio](https://img.shields.io/badge/Gradio-UI-orange?logo=gradio) ![YOLO](https://img.shields.io/badge/YOLOv8-Detection-purple) ![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20DB-orange) ![CLIP](https://img.shields.io/badge/CLIP-Embeddings-lightgrey) ![License](https://img.shields.io/badge/License-MIT-green)
+
+Developed by **Wassim Hfaiedh**
 
 This project uses object detection (YOLO) and a vision-language model (VLM) to detect
 vehicles and read their license plates exactly as printed — including Tunisian-style
@@ -8,79 +12,182 @@ plates (digits + "TN" + digits). Every detected vehicle is also embedded with CL
 you can search your logged vehicles using natural language ("silver peugeot") or by
 uploading a photo of a car or a license plate.
 
-## Demo
+---
 
-**General overview**
+## 🎬 Demo
 
-[![Watch the general overview](assets/car_8_annotated.jpg)](assets/TunisianVehicleSearch.mp4)
+<table>
+  <tr>
+    <td align="center"><b>General Overview</b></td>
+    <td align="center"><b>YOLO Detection + VLM Plate Extraction</b></td>
+  </tr>
+  <tr>
+    <td><img src="assets/TunisianVehicleSearch-ezgif.com-video-to-gif-converter.gif" width="480"/></td>
+    <td><img src="assets/v1_annotated-ezgif.com-video-to-gif-converter.gif" width="480"/></td>
+  </tr>
+</table>
 
-*Click the image to open/download `TunisianVehicleSearch.mp4`.*
+<table>
+  <tr>
+    <td align="center"><b>Detected Vehicles</b></td>
+  </tr>
+  <tr>
+    <td>
+      <img src="assets/car_8_annotated.jpg" width="270"/>
+      <img src="assets/car_9_annotated.jpg" width="270"/>
+      <img src="assets/car_4_annotated.jpg" width="270"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">silver Peugeot : 135 TN 7566 &nbsp;|&nbsp; silver Peugeot : 117 TN 6953 &nbsp;|&nbsp; white Peugeot van : 135 TN 9434</td>
+  </tr>
+</table>
 
-**YOLO detection + VLM plate extraction (annotated output)**
+<table>
+  <tr>
+    <td align="center"><b>License Plate Reads</b></td>
+  </tr>
+  <tr>
+    <td>
+      <img src="assets/plate_5_annotated.jpg" width="400"/>
+      <img src="assets/plate_21_annotated.jpg" width="400"/>
+    </td>
+  </tr>
+</table>
 
-`v1_annotated.mp4` shows the raw pipeline output: YOLO detects each vehicle and its
-plate, ByteTrack keeps a consistent ID across frames, and the Nemotron VLM reads the
-plate text as soon as the vehicle crosses the counting line.
+---
 
-[![Watch the annotated pipeline output](assets/car_9_annotated.jpg)](assets/v1_annotated.mp4)
+## ✨ Features
 
-*Click the image to open/download `v1_annotated.mp4`.*
+| Feature | Description |
+|---|---|
+| 🚙 **Vehicle Detection** | YOLOv8 detects vehicles per frame, ByteTrack keeps a stable ID across the video |
+| 🎯 **Line-Crossing Counter** | Draw a line on the first frame; vehicles are logged only when they cross it, tagged Enter/Exit |
+| 🔎 **Plate Reading via VLM** | NVIDIA Nemotron reads brand, color, and plate text exactly as printed — Tunisian and foreign formats |
+| 🧠 **CLIP Embeddings** | Every logged car and plate crop is embedded for semantic retrieval |
+| 🔍 **Semantic Search** | Search your logged vehicles with natural language ("silver peugeot") or an uploaded photo |
+| 🗄️ **Vector Storage** | ChromaDB persists car/plate embeddings and metadata locally, no external DB needed |
 
-**Detected vehicles**
+---
 
-| ![silver Peugeot](assets/car_8_annotated.jpg) | ![silver Peugeot rear](assets/car_9_annotated.jpg) | ![white Peugeot van](assets/car_4_annotated.jpg) |
-|:---:|:---:|:---:|
-| silver Peugeot : 135 TN 7566 | silver Peugeot : 117 TN 6953 | White Peugeot van : 135 TN 9434 |
-
-**License plate reads**
-
-| ![plate result 1](assets/plate_5_annotated.jpg) | ![plate result 2](assets/plate_21_annotated.jpg) |
-|:---:|:---:|
-
-## Structure
+## 🏗️ Architecture
 
 ```
-app.py                          # Gradio UI (process video + semantic search)
-vehicle_clip_search/
-  config.py                     # settings, loaded from .env
-  pipeline.py                   # detection + tracking + VLM + storage
-  clip_embedder.py               # open_clip image/text embeddings
-  vector_store.py                # ChromaDB read/write
-requirements.txt
+vehicle-clip-search/
+├── app.py                        # Gradio UI (process video + semantic search)
+├── vehicle_clip_search/
+│   ├── config.py                 # settings, loaded from .env
+│   ├── pipeline.py               # YOLO + ByteTrack + VLM + CLIP + storage
+│   ├── clip_embedder.py          # open_clip image/text embeddings
+│   └── vector_store.py           # ChromaDB read/write
+├── assets/                       # demo media (gifs, screenshots)
+├── requirements.txt
+├── .env.example
+└── .gitignore
 ```
 
-## Setup
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.10+
+- An NVIDIA API key for the Nemotron VLM ([build.nvidia.com](https://build.nvidia.com))
+- YOLO weights: `yolov8s.pt` and a license-plate detector `license_plate_detector.pt`
+
+### Installation
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/Wassimhfaiedh/TunisianVehicleSearch.git
 cd TunisianVehicleSearch
-python -m venv .venv && source .venv/bin/activate   
+
+# 2. Create and activate a virtual environment
+python -m venv .venv
+source .venv/bin/activate        # Linux/macOS
+.venv\Scripts\activate           # Windows
+
+# 3. Install dependencies
 pip install -r requirements.txt
-```
 
-Place your model weights (`yolov8s.pt`, `license_plate_detector.pt`) in the project
-root, or point `VEHICLE_MODEL_PATH` / `PLATE_MODEL_PATH` in `.env` to their location.
+# 4. Configure environment variables
+cp .env.example .env
+# Edit .env and add your NVIDIA_API_KEY
 
-## Run
-
-```bash
+# 5. Run the application
 python app.py
 ```
 
-Opens at `http://127.0.0.1:7860`.
+Open your browser at **http://127.0.0.1:7860**
 
-1. **Process Video tab** — upload a video, click two points on the frame to set the
-   crossing line, enter your Nemotron API key, click Process.
-2. **Semantic Search tab** — search by text ("silver peugeot") or by uploading a
-   car/plate photo.
+---
 
-## Notes
+## ⚙️ Environment Variables
 
-- Get an NVIDIA API key at https://build.nvidia.com.
+Create a `.env` file at the project root:
+
+```env
+NVIDIA_API_KEY=your-nvidia-api-key-here
+PLATE_MODEL_PATH=license_plate_detector.pt
+VEHICLE_MODEL_PATH=yolov8s.pt
+CAPTURES_DIR=captures
+DB_PATH=vehicle_search_chroma
+```
+
+---
+
+## 📋 Requirements
+
+```
+gradio
+opencv-python
+numpy
+requests
+supervision
+ultralytics
+torch
+open_clip_torch
+Pillow
+chromadb
+python-dotenv
+```
+
+---
+
+## 🖥️ Usage
+
+### 1. Process Video tab
+1. Upload a video
+2. Click 2 points on the frame to set the crossing line
+3. Enter your Nemotron API key (or set it via `.env`)
+4. Click **Process** — each vehicle that crosses the line is detected, plate-read, embedded, and logged
+
+### 2. Semantic Search tab
+- Type a natural language query (e.g. `"silver peugeot"`), or
+- Upload a photo of a car or a plate to find visual matches
+- Click any result to see full vehicle details
+
+---
+
+## 📝 Notes
+
 - `captures/` and `vehicle_search_chroma/` are created at runtime and are gitignored.
-- Never commit `.env` or model weights with embedded keys.
-- Demo videos live in `assets/`. GitHub only auto-renders an inline video player for
-  `user-attachments` links (the ones you get by dragging a file into an issue/PR
-  comment) — a plain link to an `.mp4` in the repo, like the ones above, opens or
-  downloads the file instead of playing inline. That's why the demo uses clickable
-  thumbnails instead of an embedded player.
+- Never commit `.env` or model weights with embedded API keys.
+- Demo clips are stored as GIFs in `assets/` so they render natively in this README —
+  GitHub only auto-plays `.mp4` inline when uploaded via an issue/PR comment
+  (`user-attachments` links), so GIF is the simplest option for repo-hosted demos.
+
+---
+
+## 🙏 Acknowledgements
+
+- [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics) — vehicle & plate detection
+- [supervision](https://github.com/roboflow/supervision) — ByteTrack tracking
+- [NVIDIA NIM](https://build.nvidia.com/) — Nemotron VLM inference
+- [open_clip](https://github.com/mlfoundations/open_clip) — CLIP embeddings
+- [ChromaDB](https://www.trychroma.com/) — vector store
+
+## 📝 License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
