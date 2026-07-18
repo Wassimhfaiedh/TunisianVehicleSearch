@@ -4,6 +4,5 @@ __pycache__/
 *.pt
 captures/
 vehicle_search_chroma/
-*.mp4
 venv/
 .venv/
