@@ -32,7 +32,7 @@ https://github.com/user-attachments/assets/PLACEHOLDER-v1_annotated.mp4
 
 **License plate reads**
 
-| ![plate result 1](assets/plate_5_annotated.jpg) | ![plate result 2](assets/plate_5_annotated.jpg) |
+| ![plate result 1](assets/plate_5_annotated.jpg) | ![plate result 2](assets/plate_21_annotated.jpg) |
 
 
 ## Structure
