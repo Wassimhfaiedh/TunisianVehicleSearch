@@ -1,4 +1,4 @@
-# 🚗 Tunisian Vehicle Search
+# Tunisian Vehicle Search
 
 > **VLM + CLIP Vehicle Surveillance Platform** — Detect, read plates, and semantically search vehicles from traffic video.
 
