@@ -12,9 +12,9 @@ uploading a photo of a car or a license plate.
 
 **General overview**
 
-https://github.com/user-attachments/assets/PLACEHOLDER-TunisianVehicleSearch.mp4
+[![Watch the general overview](assets/car_8_annotated.jpg)](assets/TunisianVehicleSearch.mp4)
 
-*(GitHub video link — see note below on hosting large video files.)*
+*Click the image to open/download `TunisianVehicleSearch.mp4`.*
 
 **YOLO detection + VLM plate extraction (annotated output)**
 
@@ -22,7 +22,9 @@ https://github.com/user-attachments/assets/PLACEHOLDER-TunisianVehicleSearch.mp4
 plate, ByteTrack keeps a consistent ID across frames, and the Nemotron VLM reads the
 plate text as soon as the vehicle crosses the counting line.
 
-https://github.com/user-attachments/assets/PLACEHOLDER-v1_annotated.mp4
+[![Watch the annotated pipeline output](assets/car_9_annotated.jpg)](assets/v1_annotated.mp4)
+
+*Click the image to open/download `v1_annotated.mp4`.*
 
 **Detected vehicles**
 
@@ -33,7 +35,7 @@ https://github.com/user-attachments/assets/PLACEHOLDER-v1_annotated.mp4
 **License plate reads**
 
 | ![plate result 1](assets/plate_5_annotated.jpg) | ![plate result 2](assets/plate_21_annotated.jpg) |
-
+|:---:|:---:|
 
 ## Structure
 
@@ -77,7 +79,8 @@ Opens at `http://127.0.0.1:7860`.
 - Get an NVIDIA API key at https://build.nvidia.com.
 - `captures/` and `vehicle_search_chroma/` are created at runtime and are gitignored.
 - Never commit `.env` or model weights with embedded keys.
-- The demo videos are large (30–60MB+). Don't commit them straight to git — either
-  drag-and-drop them into a GitHub issue/PR/release to get a `user-attachments` URL
-  (fastest, what the placeholders above expect), or use Git LFS if you want them
-  versioned in the repo itself.
+- Demo videos live in `assets/`. GitHub only auto-renders an inline video player for
+  `user-attachments` links (the ones you get by dragging a file into an issue/PR
+  comment) — a plain link to an `.mp4` in the repo, like the ones above, opens or
+  downloads the file instead of playing inline. That's why the demo uses clickable
+  thumbnails instead of an embedded player.
