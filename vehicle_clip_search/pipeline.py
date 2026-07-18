@@ -35,30 +35,10 @@ def _load_models():
         _plate_model = YOLO(PLATE_MODEL_PATH)
 
 
-# NOTE: this is a generic placeholder prompt. Replace it with your own
-# tuned prompt (plate formats, extra fields, stricter JSON schema, etc.) —
-# the original production prompt used here is kept private.
-VLM_PROMPT = """You are analyzing two cropped traffic-camera images:
-image 1 is the full vehicle, image 2 is a close-up of its license plate.
-
-Identify the plate format:
-- "tunisian": Arabic-script "TN" style plate, printed as two digit groups
-  separated by a divider (e.g. "128" TN "78").
-- "foreign": any other plate using Latin letters/digits (e.g. "AB-123-CD").
-
-Respond ONLY with valid JSON, no markdown, no backticks, no extra text:
-
-{
-  "vehicle_type": "<brand/make if visible, else unknown>",
-  "color": "<dominant vehicle color>",
-  "plate_type": "<tunisian|foreign>",
-  "plate_left": "<if tunisian: left digit group, else ''>",
-  "plate_right": "<if tunisian: right digit group, else ''>",
-  "plate_full": "<if foreign: full plate as printed, else ''>",
-  "description": "<one sentence: brand, color, and plate>"
-}
-
-Read each field exactly as shown, without assuming a fixed digit count."""
+# NOTE: prompt removed on purpose (private/tuned prompt). Paste your own
+# VLM prompt here. It must ask the model to return valid JSON with keys:
+# vehicle_type, color, plate_type, plate_left, plate_right, plate_full, description.
+VLM_PROMPT = ""
 
 
 def _encode_jpg(img) -> str:
