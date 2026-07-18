@@ -4,6 +4,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python) ![Gradio](https://img.shields.io/badge/Gradio-UI-orange?logo=gradio) ![YOLO](https://img.shields.io/badge/YOLOv8-Detection-purple) ![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20DB-orange) ![CLIP](https://img.shields.io/badge/CLIP-Embeddings-lightgrey) ![License](https://img.shields.io/badge/License-MIT-green)
 
+Developed by **Wassim Hfaiedh**
 
 This project uses object detection (YOLO) and a vision-language model (VLM) to detect
 vehicles and read their license plates exactly as printed — including Tunisian-style
@@ -25,13 +26,11 @@ uploading a photo of a car or a license plate.
 
 <table>
   <tr>
-    <td align="center"><b>Detected Vehicles</b></td>
-    <td align="center"></td>
+    <td align="center" colspan="2"><b>Detected Vehicles</b></td>
   </tr>
   <tr>
-    <td align="center"><img src="assets/car_8_annotated.jpg" width="400"/></td>
-    <td align="center"><b>Detected Vehicles</b></td>
-    <td align="center"><img src="assets/car_4_annotated.jpg" width="400"/></td>
+    <td align="center" width="50%"><img src="assets/car_8_annotated.jpg" width="400"/></td>
+    <td align="center" width="50%"><img src="assets/car_4_annotated.jpg" width="400"/></td>
   </tr>
   <tr>
     <td align="center">silver Peugeot : 135 TN 7566</td>
